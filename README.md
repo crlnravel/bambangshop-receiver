@@ -68,16 +68,16 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [x] Commit: `Implement list_all_as_string function in Notification repository.`
     -   [x] Write answers of your learning module's "Reflection Subscriber-1" questions in this README.
 -   **STAGE 2: Implement services and controllers**
-    -   [ ] Commit: `Create Notification service struct skeleton.`
-    -   [ ] Commit: `Implement subscribe function in Notification service.`
-    -   [ ] Commit: `Implement subscribe function in Notification controller.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification service.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification controller.`
-    -   [ ] Commit: `Implement receive_notification function in Notification service.`
-    -   [ ] Commit: `Implement receive function in Notification controller.`
-    -   [ ] Commit: `Implement list_messages function in Notification service.`
-    -   [ ] Commit: `Implement list function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Subscriber-2" questions in this README.
+    -   [x] Commit: `Create Notification service struct skeleton.`
+    -   [x] Commit: `Implement subscribe function in Notification service.`
+    -   [x] Commit: `Implement subscribe function in Notification controller.`
+    -   [x] Commit: `Implement unsubscribe function in Notification service.`
+    -   [x] Commit: `Implement unsubscribe function in Notification controller.`
+    -   [x] Commit: `Implement receive_notification function in Notification service.`
+    -   [x] Commit: `Implement receive function in Notification controller.`
+    -   [x] Commit: `Implement list_messages function in Notification service.`
+    -   [x] Commit: `Implement list function in Notification controller.`
+    -   [x] Write answers of your learning module's "Reflection Subscriber-2" questions in this README.
 
 ## Your Reflections
 This is the place for you to write reflections:
@@ -98,3 +98,18 @@ Rust does not allow direct mutation of a static variable to ensure thread safety
 
 #### Reflection Subscriber-2
 
+> Have you explored things outside of the steps in the tutorial, for example: src/lib.rs? If not, explain why you did not do so. If yes, explain things that you have learned from those other parts of code.
+
+Yes, I have explored src/lib.rs a bit. From my exploration, this file contains several helper functions that assist in tasks such as loading information from .env files and handling custom error responses. Additionally, I also looked into the use of RwLock<> and Mutex<> for managing concurrent access to shared data. Understanding when to use RwLock<> (for read-heavy cases) and when to use Mutex<> (for exclusive access) is crucial for ensuring efficient and safe data handling. This exploration helped me gain deeper insights into Rust’s concurrency mechanisms and how they apply to real-world scenarios.
+
+> Since you have completed the tutorial by now and have tried to test your notification system by spawning multiple instances of Receiver, explain how Observer pattern eases you to plug in more subscribers. How about spawning more than one instance of Main app, will it still be easy enough to add to the system?
+
+The Observer Pattern makes it easy to add new subscribers because we can simply register them without modifying the publisher's code. This works because the publisher only interacts with subscribers through a generic Observer interface, without needing to know their specific implementations. This flexibility allows for seamless scalability when adding more subscribers.
+
+However, if we spawn multiple instances of the Main app, things become more complex. For example, if there are multiple publishers, but a subscriber is only connected to one of them, we need to ensure that notifications from other publishers still reach the appropriate subscribers. This would require additional logic to manage cross-instance communication, which could introduce potential challenges or bugs in the system.
+
+> Have you tried to make your own Tests, or enhance documentation on your Postman collection? If you have tried those features, tell us whether it is useful for your work (it can be your tutorial work or your Group Project).
+
+Yes, I have added several tests in Postman to validate the endpoints I created. These tests focus on checking the subscription feature in the publisher application, particularly by testing different variations of product types. I found this feature extremely useful in ensuring that my endpoints work correctly and behave as expected.
+
+Additionally, I have improved the documentation in my Postman collection to make it easier for me to understand the purpose of each test later on. This has helped me maintain clarity in my testing process. Overall, I believe that Postman is a valuable tool for API testing, and I expect it will continue to be helpful in future tutorials and group projects.
